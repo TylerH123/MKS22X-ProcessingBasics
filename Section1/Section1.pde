@@ -17,7 +17,7 @@ class Visualizer {
     speeds = new float[10];
     for (int i = 0; i < values.length; i++) {
       values[i] = random(-99, 99);
-      speeds[i] = random(5);
+      speeds[i] = random(2);
     }
   }
 
@@ -42,10 +42,20 @@ class Visualizer {
     //THESE ARE WRONG: They just illustrate how they could look
     for (int i = 0; i < values.length; i++) {
       if (values[i] > 0) {
-        fill(255, 0, 0);
+        if (values[i] > 50 && values[i] <= 100){
+          fill(0, 255, 0);
+        }
+        if (values[i] > 0 && values[i] <= 50){
+          fill(255, 255, 0);
+        }
         rect(i*(400/values.length)+x, 120, 400/values.length, -1 * values[i]);
       } else {
-        fill(0, 255, 0);
+        if (values[i] > -50 && values[i] < 0){
+          fill(255, 165, 0);
+        }
+        if (values[i] <= -50 && values[i] >= -100){
+          fill(255, 0, 0);
+        }
         rect(i*(400/values.length)+x, 120, 400/values.length, -1 * values[i]);
       }
     }
