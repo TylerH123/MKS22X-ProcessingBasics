@@ -15,9 +15,24 @@ void setup() {
   etc.
 */
 void gasket(int levels, float v1x, float v1y, float v2x, float v2y, float v3x, float v3y) {
-    //YOU WRITE THIS METHOD!
-}
+  
+  if (levels <= 0) triangle(v1x, v1y, v2x, v2y, v3x, v3y);
+  else {
 
+    float v12x = (v1x+v2x)/2;
+    float v12y = (v1y+v2y)/2;
+    float v23x = (v2x+v3x)/2;
+    float v23y = (v2y+v3y)/2;
+    float v31x = (v3x+v1x)/2;
+    float v31y = (v3y+v1y)/2;
+
+    gasket(levels-1, v1x, v1y, v12x, v12y, v31x, v31y);
+    gasket(levels-1, v12x, v12y, v2x, v2y, v23x, v23y);
+    gasket(levels-1, v31x, v31y, v23x, v23y, v3x, v3y);
+
+  }
+
+}
 void draw() { 
   background(50);  
   
